@@ -22,9 +22,9 @@ void do_block_fast(int lda, int M, int N, int K, double *A, double *B, double *C
     static double a[BLOCK_SIZE * BLOCK_SIZE] __attribute__ ((aligned (16))); // make a local aligned copy of A's block
     double a1, a2, b1, b2, a3, a4, c1, c2, c3, c4, b3, b4;
 
-    for (int j = 0; j < K; j++)
-        for (int i = 0; i < M; i++)
-            a[i + j * BLOCK_SIZE] = A[i + j * lda];
+    for( int i = 0; i < M; i++ )
+        for( int j = 0; j < K; j++ )
+            a[j+i*BLOCK_SIZE] = A[i+j*lda];
 
     /* For each row i of A */
     for (int i = 0; i < M; ++i) /* For each column j of B */
@@ -33,10 +33,10 @@ void do_block_fast(int lda, int M, int N, int K, double *A, double *B, double *C
             double cij = C[i + j * lda];
             for (int k = 0; k < K; k=k+4) {
 
-                a1 = a[i+k*BLOCK_SIZE];
-                a2 = a[i+(k+1)*BLOCK_SIZE];
-                a3 = a[i+(k+2)*BLOCK_SIZE];
-                a4 = a[i+(k+3)*BLOCK_SIZE];
+                a1 = a[k+i*BLOCK_SIZE];
+                a2 = a[k+(i+1)*BLOCK_SIZE];
+                a3 = a[k+(i+2)*BLOCK_SIZE];
+                a4 = a[k+(i+3)*BLOCK_SIZE];
                 b1 = B[k+j*lda];
                 b2 = B[(k+1)+j*lda];
                 b3 = B[(k+2)+j*lda];
