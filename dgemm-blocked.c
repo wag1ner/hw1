@@ -34,9 +34,9 @@ void do_block_fast(int lda, int M, int N, int K, double *A, double *B, double *C
             for (int k = 0; k < K; k=k+4) {
 
                 a1 = a[k+i*BLOCK_SIZE];
-                a2 = a[k+(i+1)*BLOCK_SIZE];
-                a3 = a[k+(i+2)*BLOCK_SIZE];
-                a4 = a[k+(i+3)*BLOCK_SIZE];
+                a2 = a[(k+1)+i*BLOCK_SIZE];
+                a3 = a[(k+1)+(i+2)*BLOCK_SIZE];
+                a4 = a[(k+1)+(i+3)*BLOCK_SIZE];
                 b1 = B[k+j*lda];
                 b2 = B[(k+1)+j*lda];
                 b3 = B[(k+2)+j*lda];
@@ -67,9 +67,6 @@ static void do_block(int lda, int M, int N, int K, double *A, double *B, double 
             /* Compute C(i,j) */
             double cij = C[i + j * lda];
             for (int k = 0; k < K; ++k)
-
-
-
                 cij += A[i + k * lda] * B[k + j * lda];
             C[i + j * lda] = cij;
         }
