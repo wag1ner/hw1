@@ -22,33 +22,7 @@ void do_block_fast(int lda, int M, int N, int K, double *A, double *B, double *C
     static double a[BLOCK_SIZE * BLOCK_SIZE] __attribute__ ((aligned (16))); // make a local aligned copy of A's block
     double a1, a2, b1, b2, a3, a4, c1, c2, c3, c4, b3, b4;
 
-    __m128d c0, c1, a0, a1, b0, b1, b2, b3, d0, d1;
-
-    for (int k=0; k<K; k+=RSIZE_K) {
-        for (int j=0; j<N; j+=RSIZE_N) {
-
-            b0 = _mm_load1_pd(B+k+j*K);
-            b1 = _mm_load1_pd(B+k+1+j*K);
-            b2 = _mm_load1_pd(B+k+(j+1)*K);
-            b3 = _mm_load1_pd(B+k+1+(j+1)*K);
-
-            for (int i=0; i<M; i+=RSIZE_M) {
-                a0 = _mm_load_pd(A+i+k*M);
-                a1 = _mm_load_pd(A+i+(k+1)*M);
-
-                c0 = _mm_load_pd(C+i+j*M);
-                c1 = _mm_load_pd(C+i+(j+1)*M);
-
-                d0 = _mm_add_pd(c0, _mm_mul_pd(a0,b0));
-                d1 = _mm_add_pd(c1, _mm_mul_pd(a0,b2));
-                c0 = _mm_add_pd(d0, _mm_mul_pd(a1,b1));
-                c1 = _mm_add_pd(d1, _mm_mul_pd(a1,b3));
-
-                _mm_store_pd(C+i+j*M,c0);
-                _mm_store_pd(C+i+(j+1)*M,c1);
-
-
-                for( int i = 0; i < M; i++ )
+    for( int i = 0; i < M; i++ )
         for( int j = 0; j < K; j++ )
             a[j+i*BLOCK_SIZE] = A[i+j*lda];
 
