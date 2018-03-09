@@ -36,8 +36,8 @@
       <file leaf-file-name="dgemm-blocked.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dgemm-blocked.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-33">
-              <caret line="15" column="21" lean-forward="false" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+            <state relative-caret-position="239">
+              <caret line="39" column="7" lean-forward="false" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -62,7 +62,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="270" />
+    <option name="x" value="198" />
     <option name="y" value="33" />
     <option name="width" value="915" />
     <option name="height" value="926" />
@@ -131,7 +131,7 @@
       <workItem from="1519859628060" duration="611000" />
       <workItem from="1519963231626" duration="588000" />
       <workItem from="1520017387709" duration="657000" />
-      <workItem from="1520571368384" duration="3397000" />
+      <workItem from="1520571368384" duration="4216000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1520017498248</created>
@@ -175,14 +175,28 @@
       <option name="project" value="LOCAL" />
       <updated>1520575227546</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="update11">
+      <created>1520575302431</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1520575302431</updated>
+    </task>
+    <task id="LOCAL-00008" summary="update12">
+      <created>1520575674868</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1520575674868</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6611000" />
+    <option name="totallyTimeSpent" value="7430000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="270" y="33" width="915" height="926" extended-state="0" />
+    <frame x="198" y="33" width="915" height="926" extended-state="0" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24918033" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -214,7 +228,9 @@
     <MESSAGE value="update8" />
     <MESSAGE value="update9" />
     <MESSAGE value="update10" />
-    <option name="LAST_COMMIT_MESSAGE" value="update10" />
+    <MESSAGE value="update11" />
+    <MESSAGE value="update12" />
+    <option name="LAST_COMMIT_MESSAGE" value="update12" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -303,8 +319,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dgemm-blocked.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-33">
-          <caret line="15" column="21" lean-forward="false" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+        <state relative-caret-position="239">
+          <caret line="39" column="7" lean-forward="false" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
           <folding />
         </state>
       </provider>
