@@ -82,9 +82,9 @@ void square_dgemm(int lda, double *A, double *B, double *C) {
                 int N = min (BLOCK_SIZE, lda - j);
                 int K = min (BLOCK_SIZE, lda - k);
 
-                double a1, a2, b1, b2, a3, a4, b3, b4;
+                double a1 = 0, a2 = 0, b1 = 0, b2 = 0, a3= 0 , a4 = 0, b3 = 0, b4 = 0;
                 double a;
-                double c1, c3, c4, cij;
+                double c1, c3, c4, cij = 0;
 
                 c1 = a1 * b1;
                 double  c2 = a2 * b2;
