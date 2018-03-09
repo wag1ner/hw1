@@ -20,6 +20,8 @@ const char *dgemm_desc = "Simple blocked dgemm.";
 
 void do_block_fast(int lda, int M, int N, int K, double *A, double *B, double *C) {
     static double a[BLOCK_SIZE * BLOCK_SIZE] __attribute__ ((aligned (16))); // make a local aligned copy of A's block
+    double a1, a2, b1, b2, a3, a4, c1, c2, c3, c4, b3, b4;
+
     for (int j = 0; j < K; j++)
         for (int i = 0; i < M; i++)
             a[i + j * BLOCK_SIZE] = A[i + j * lda];
@@ -29,7 +31,18 @@ void do_block_fast(int lda, int M, int N, int K, double *A, double *B, double *C
         for (int j = 0; j < N; ++j) {
 /* Compute C(i,j) */
             double cij = C[i + j * lda];
-            for (int k = 0; k < K; ++k) {
+            for (int k = 0; k < K; k=k+4) {
+
+                a1 = a[i+k*BLOCK_SIZE];
+                a2 = a[i+(k+1)*BLOCK_SIZE];
+                a3 = a[i+(k+2)*BLOCK_SIZE];
+                a4 = a[i+(k+3)*BLOCK_SIZE];
+                b1 = B[k+j*lda];;
+                b2 = B[(k+1)+j*lda]; b3 = B[(k+2)+j*lda]; b4 = B[(k+3)+j*lda];
+
+                c1 = a1 * b1; c2 = a2 * b2; c3 = a3 * b3; c4 = a4 * b4;
+                cij += c1; cij += c2; cij += c3; cij += c4;
+
                 cij += a[i + k * BLOCK_SIZE] * B[k + j * lda];
             }
             C[i + j * lda] = cij;
@@ -47,6 +60,9 @@ static void do_block(int lda, int M, int N, int K, double *A, double *B, double 
             /* Compute C(i,j) */
             double cij = C[i + j * lda];
             for (int k = 0; k < K; ++k)
+
+
+
                 cij += A[i + k * lda] * B[k + j * lda];
             C[i + j * lda] = cij;
         }
